@@ -70,19 +70,25 @@ sqd codegen
 sqd typegen
 ```
 
-4. Open docker and run:
+4. Build the squid
+
+```bash
+sqd typegen
+```
+
+5. Open docker and run:
 
 ```bash
 sqd up
 ```
 
-5. Generate migrations:
+6. Generate migrations:
 
 ```bash
 sqd migration:generate
 ```
 
-6. Start processing:
+7. Start processing:
 
 ```bash
 sqd process
