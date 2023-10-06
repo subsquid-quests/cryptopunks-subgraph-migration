@@ -22,22 +22,39 @@ This quest is to migrate the [CryptoPunks Subgraph](https://thegraph.com/explore
 
 # Acceptance critera
 
-Each quest should be submitted as a private repo and will be reviewed manually. To submit, invite the following github accounts to your private repo : [@dariaag](https://github.com/dariaag), [@belopash](https://github.com/belopash), [@abernatskiy](https://github.com/abernatskiy) and [@dzhelezov](https://github.com/dzhelezov). The repo should contain `README.MD` with
+Ultimately, the solutions are accepted at the discretion of judges following a manual review. This sections is a rough guide that is in no way binding on our side.
 
-- Insturctions how to run the squid locally
-- Sample Squid queries and the corresponding Subgraph queries
+Some of the reasons why the solution will not be accepted include:
+- squid does not start
+- squid fails to sync fully due to internal errors
+- [batch handler filters](https://docs.subsquid.io/evm-indexing/configuration/caveats/) are not set up correctly (leads to a late sync failure in [RPC-ingesting](https://docs.subsquid.io/evm-indexing/evm-processor/#rpc-ingestion) squids)
+- data returned for any query is not consistent with subgraph data
 
-The code should be well documented. The judges will access:
+It is desirable that your solution:
+- includes a suite of test GraphQL queries that touches every [schema entity](https://docs.subsquid.io/store/postgres/schema-file/entities/) and, if used, every [custom resolver](https://docs.subsquid.io/graphql-api/custom-resolvers/) at least once, with corresponding subgraph queries (listing in README is enough)
+- has high code quality (readability, simplicity, comments where necessary)
+- uses [batch processing](https://docs.subsquid.io/basics/batch-processing/) consistently
+- avoids any "sleeping bugs": logic errors that accidentally happen to not break the data
+- follows the standard squid startup procedure:
+  ```
+  git clone <repo_url>
+  cd <repo_url>
+  npm ci
+  sqd up
+  sqd process &
+  sqd serve
+  ```
+  If it does not, describe your startup procedure in the README.
 
-- In-line commends where necessary
-- Clarity of the code
-- Performance and optimization (if [batching](https://docs.subsquid.io/basics/batch-processing/)  and [Multicall queries](https://docs.subsquid.io/tutorials/bayc/step-four-optimizations/#using-multicall-for-aggregating-state-queries) are used whenever appropriate)
+Please test your solutions before submitting. We do allow some corrections, but judges' time is not limitless.
+
+To submit, invite the following github accounts to your private repo : [@dariaag](https://github.com/dariaag), [@belopash](https://github.com/belopash), [@abernatskiy](https://github.com/abernatskiy) and [@dzhelezov](https://github.com/dzhelezov).
 
 # Useful links
 
 - [Quickstart](https://docs.subsquid.io/deploy-squid/quickstart/)
 - [TheGraph Migration guide](https://docs.subsquid.io/migrate/migrate-subgraph/)
-- [Snapshot Subgraph source code](https://github.com/snapshot-labs/snapshot-subgraph)
+- [Cryptopunks Subgraph source code](https://github.com/itsjerryokolo/CryptoPunks)
 
 # Setup and Common errors
 
