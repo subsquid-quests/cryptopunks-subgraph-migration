@@ -1,0 +1,14 @@
+manifestVersion: subsquid.io/v0.1
+name: transactions-example
+version: 1
+description: |-
+  Basic example of processing transactions 
+build:
+
+deploy:
+  addons:
+    postgres:
+  processor:
+    cmd: [ "node", "lib/main" ]
+  api:
+    cmd: [ "npx", "squid-graphql-server", "--dumb-cache", "in-memory", "--dumb-cache-ttl", "1000", "--dumb-cache-size", "100", "--dumb-cache-max-age", "1000" ]
