@@ -50,6 +50,12 @@ Please test your solutions before submitting. We do allow some corrections, but 
 
 To submit, invite the following github accounts to your private repo : [@dariaag](https://github.com/dariaag), [@belopash](https://github.com/belopash), [@abernatskiy](https://github.com/abernatskiy) and [@dzhelezov](https://github.com/dzhelezov).
 
+# Rewards
+
+tSQD rewards will be delivered via the [quests page](https://app.subsquid.io/quests) of Subsquid Cloud. Make sure you use the same GitHub handle to make a submission and when linking to that page.
+
+Winners will be listed at the quest repository README. If you do not wish to be listed please tell us that in an issue in your submission repo.
+
 # Useful links
 
 - [Quickstart](https://docs.subsquid.io/deploy-squid/quickstart/)
@@ -68,6 +74,8 @@ To submit, invite the following github accounts to your private repo : [@dariaag
     ```
     
 ## How to run a squid:
+
+Full startup procedure for newly developed squids:
 
 1. Install dependecies:
 
@@ -90,7 +98,7 @@ sqd typegen
 4. Build the squid
 
 ```bash
-sqd typegen
+sqd build
 ```
 
 5. Open docker and run:
@@ -109,6 +117,20 @@ sqd migration:generate
 
 ```bash
 sqd process
+```
+
+8. Start a local GraphQL server in a separate terminal:
+
+```bash
+sqd serve
+```
+
+Types (`./src/abi`), models (`./src/model`) and migrations ('./db') are typically kept within squid repos after they become stable. Then the startup procedure simplifies to
+```bash
+npm ci
+sqd up
+sqd process &
+sqd serve
 ```
 
 ## Possible Errors:
@@ -138,11 +160,10 @@ TYPEGEN
     Code: ENOENT
 ```
 
-4. Rate-limiting. Change the `rpcUrl` in `processor.ts`
+4. Rate-limiting. Get a private RPC endpoint from [any node provider](https://ethereumnodes.com), then change the `rpcUrl` in `processor.ts`
 
 ```bash
 will pause new requests for 20000ms {"rpcUrl":"https://rpc.ankr.com/eth", 
 "reason" : "HttpError: got 429 from https://rpc.ankr.com/eth"}
 ```
-
-
+   If necessary, [rate limit your RPC queries](https://docs.subsquid.io/evm-indexing/configuration/initialization/#set-data-source).
