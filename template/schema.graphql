@@ -1,3 +1,6 @@
-type Entity @entity {
+type Gravatar @entity {
   id: ID!
+ownwr: Bytes!
+displayName: string!
+imageUrl: string!
 }
