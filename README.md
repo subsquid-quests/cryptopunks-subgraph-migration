@@ -18,7 +18,7 @@ This quest is to migrate the [CryptoPunks Subgraph](https://thegraph.com/explore
 
 | Category         | Skill Level                          | Time required (hours) | Max Participants | Reward                             | Status |
 | ---------------- | ------------------------------------ | --------------------- | ---------------- | ---------------------------------- | ------ |
-| Squid Deployment | $\textcolor{orange}{\textsf{Medium}}$ | ~20                    | 5                | $\textcolor{red}{\textsf{3000tSQD}}$ | in review |
+| Squid Deployment | $\textcolor{orange}{\textsf{Medium}}$ | ~20                    | 5                | $\textcolor{red}{\textsf{3000tSQD}}$ | ended |
 
 # Acceptance critera
 
